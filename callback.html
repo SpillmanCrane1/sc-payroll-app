@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Connecting to QuickBooks...</title>
+  <style>
+    body { font-family: Georgia, serif; text-align: center; padding: 60px 40px; color: #444; }
+    h2 { color: #1a3a5c; margin-bottom: 16px; }
+    p { font-size: 14px; color: #888; }
+  </style>
+</head>
+<body>
+  <h2>Connecting to QuickBooks...</h2>
+  <p>Please wait while we complete authorization.</p>
+
+  <script>
+    // Grab the full query string from the URL Intuit redirected to
+    // and forward it to the local script running on your machine
+    var params = window.location.search;
+    if (params) {
+      window.location.href = "http://localhost:8080" + params;
+    } else {
+      document.querySelector("h2").textContent = "Authorization failed.";
+      document.querySelector("p").textContent = "No authorization code received. Please try again.";
+    }
+  </script>
+</body>
+</html>
